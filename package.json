@@ -1,0 +1,20 @@
+{
+  "name": "hack-bnb",
+  "version": "1.0.0",
+  "description": "HackBnB - Decentralized Accommodation Marketplace on BNB Chain",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network bscTestnet",
+    "deploy:opbnb": "hardhat run scripts/deploy.ts --network opBNBTestnet",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "install:all": "npm install && cd frontend && npm install"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "dotenv": "^16.3.1"
+  },
+  "license": "MIT"
+}
