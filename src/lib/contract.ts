@@ -8,7 +8,7 @@ export const BSC_TESTNET = {
   chainId: 97,
   chainIdHex: "0x61",
   name: "BNB Smart Chain Testnet",
-  rpcUrl: "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+  rpcUrl: "https://bsc-testnet.drpc.org",
   explorer: "https://testnet.bscscan.com",
   currency: {
     name: "tBNB",
