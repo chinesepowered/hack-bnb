@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="font-sans min-h-screen flex flex-col">
         <Web3Provider>
           <Navbar />
           <main className="flex-1">{children}</main>
