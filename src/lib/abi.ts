@@ -1,0 +1,237 @@
+export const HACKBNB_ABI = [
+  // Property Management
+  {
+    inputs: [
+      { name: "_name", type: "string" },
+      { name: "_location", type: "string" },
+      { name: "_description", type: "string" },
+      { name: "_imageURI", type: "string" },
+      { name: "_pricePerNight", type: "uint256" },
+    ],
+    name: "listProperty",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_propertyId", type: "uint256" }],
+    name: "toggleProperty",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  // Booking
+  {
+    inputs: [
+      { name: "_propertyId", type: "uint256" },
+      { name: "_checkIn", type: "uint256" },
+      { name: "_checkOut", type: "uint256" },
+    ],
+    name: "bookProperty",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_bookingId", type: "uint256" }],
+    name: "completeBooking",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_bookingId", type: "uint256" }],
+    name: "cancelBooking",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  // Reviews
+  {
+    inputs: [
+      { name: "_bookingId", type: "uint256" },
+      { name: "_rating", type: "uint256" },
+      { name: "_comment", type: "string" },
+    ],
+    name: "submitReview",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  // View Functions
+  {
+    inputs: [{ name: "_id", type: "uint256" }],
+    name: "getProperty",
+    outputs: [
+      {
+        components: [
+          { name: "id", type: "uint256" },
+          { name: "owner", type: "address" },
+          { name: "name", type: "string" },
+          { name: "location", type: "string" },
+          { name: "description", type: "string" },
+          { name: "imageURI", type: "string" },
+          { name: "pricePerNight", type: "uint256" },
+          { name: "isActive", type: "bool" },
+          { name: "totalBookings", type: "uint256" },
+          { name: "totalRating", type: "uint256" },
+          { name: "reviewCount", type: "uint256" },
+        ],
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_id", type: "uint256" }],
+    name: "getBooking",
+    outputs: [
+      {
+        components: [
+          { name: "id", type: "uint256" },
+          { name: "propertyId", type: "uint256" },
+          { name: "guest", type: "address" },
+          { name: "checkIn", type: "uint256" },
+          { name: "checkOut", type: "uint256" },
+          { name: "totalPrice", type: "uint256" },
+          { name: "status", type: "uint8" },
+          { name: "reviewed", type: "bool" },
+        ],
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getAllProperties",
+    outputs: [
+      {
+        components: [
+          { name: "id", type: "uint256" },
+          { name: "owner", type: "address" },
+          { name: "name", type: "string" },
+          { name: "location", type: "string" },
+          { name: "description", type: "string" },
+          { name: "imageURI", type: "string" },
+          { name: "pricePerNight", type: "uint256" },
+          { name: "isActive", type: "bool" },
+          { name: "totalBookings", type: "uint256" },
+          { name: "totalRating", type: "uint256" },
+          { name: "reviewCount", type: "uint256" },
+        ],
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_propertyId", type: "uint256" }],
+    name: "getPropertyReviews",
+    outputs: [
+      {
+        components: [
+          { name: "reviewer", type: "address" },
+          { name: "bookingId", type: "uint256" },
+          { name: "rating", type: "uint256" },
+          { name: "comment", type: "string" },
+          { name: "timestamp", type: "uint256" },
+        ],
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_user", type: "address" }],
+    name: "getUserProperties",
+    outputs: [{ name: "", type: "uint256[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ name: "_user", type: "address" }],
+    name: "getUserBookings",
+    outputs: [{ name: "", type: "uint256[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "propertyCount",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "bookingCount",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "platformFeeBps",
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  // Events
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "id", type: "uint256" },
+      { indexed: true, name: "host", type: "address" },
+      { indexed: false, name: "name", type: "string" },
+      { indexed: false, name: "pricePerNight", type: "uint256" },
+    ],
+    name: "PropertyListed",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "id", type: "uint256" },
+      { indexed: true, name: "propertyId", type: "uint256" },
+      { indexed: true, name: "guest", type: "address" },
+      { indexed: false, name: "totalPrice", type: "uint256" },
+    ],
+    name: "BookingCreated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [{ indexed: true, name: "id", type: "uint256" }],
+    name: "BookingCompleted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "id", type: "uint256" },
+      { indexed: false, name: "cancelledBy", type: "address" },
+    ],
+    name: "BookingCancelled",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: "propertyId", type: "uint256" },
+      { indexed: true, name: "bookingId", type: "uint256" },
+      { indexed: true, name: "reviewer", type: "address" },
+      { indexed: false, name: "rating", type: "uint256" },
+    ],
+    name: "ReviewSubmitted",
+    type: "event",
+  },
+] as const;
