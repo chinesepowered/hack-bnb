@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { ethers } from "ethers";
 import {
   PlusCircle,
-  Upload,
   Sparkles,
   Loader2,
   CheckCircle,

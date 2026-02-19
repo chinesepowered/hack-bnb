@@ -1,169 +1,192 @@
-# HackBnB — Decentralized Accommodation on BNB Chain
+# 🏠 HackBnB
 
-> The first decentralized Airbnb built on BNB Smart Chain. Book stays with crypto, trustless escrow payments, onchain reviews, and AI-powered discovery.
+### Stay Anywhere. Pay with Crypto. Trust the Chain.
 
-Built for the **Good Vibes Only: OpenClaw Edition** Hackathon.
+HackBnB is the first **decentralized accommodation marketplace** built on BNB Chain — think Airbnb, but onchain. Guests pay with BNB, smart contracts handle escrow, reviews live on the blockchain, and an AI assistant helps you find your perfect stay.
 
----
-
-## Overview
-
-HackBnB brings the sharing economy onchain. Hosts list properties, guests book with BNB, and smart contracts handle escrow payments — no intermediaries, no trust assumptions. An AI assistant helps guests discover the perfect stay.
-
-### Key Features
-
-- **Onchain Bookings** — Pay with BNB via smart contract escrow. Funds release to hosts automatically after checkout.
-- **Trustless Reviews** — Reviews are stored onchain and tied to verified bookings. No fake reviews possible.
-- **AI Travel Assistant** — Built-in chatbot helps guests find properties by preference, budget, and location.
-- **AI-Generated Descriptions** — Hosts can generate optimized property descriptions with one click.
-- **Low Fees** — 2.5% platform fee (vs 14-20% on Web2 platforms).
-- **Cancellation Protection** — Smart contract handles refunds automatically. Guests can cancel before check-in.
+No middlemen. No chargebacks. No fake reviews. Just trustless travel. ✨
 
 ---
 
-## Tech Stack
+## 🎯 The Problem
+
+Traditional booking platforms take **14–20% in fees**, control your money with opaque escrow, let fake reviews run rampant, and lock out billions of unbanked travelers. Hosts wait days or weeks for payouts. Guests have no real transparency into where their money goes.
+
+## 💡 The Solution
+
+HackBnB replaces all of that with smart contracts:
+
+- 🔐 **Trustless Escrow** — Funds flow through a Solidity contract. Hosts get paid instantly on checkout. No middleman holds your money.
+- 💸 **2.5% Fee** — Compare that to Airbnb's 14-20%. More value stays with hosts and guests.
+- ⭐ **Onchain Reviews** — Every review is tied to a verified booking on the blockchain. No fakes. No manipulation.
+- 🤖 **AI-Powered Discovery** — A built-in AI travel assistant recommends properties based on your preferences, budget, and travel style.
+- 🌍 **Borderless** — Anyone with a wallet can book. No bank accounts, no credit checks, no currency conversion headaches.
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| **Blockchain** | BNB Smart Chain (BSC Testnet) |
-| **Smart Contracts** | Solidity 0.8.19, Hardhat |
-| **Frontend** | Next.js 16, React 19, TypeScript |
-| **Styling** | Tailwind CSS, Framer Motion |
-| **Web3** | ethers.js v6, MetaMask |
-| **AI** | Built-in AI assistant (extensible to LLM APIs) |
+| ⛓️ Blockchain | BNB Smart Chain (BSC Testnet) |
+| 📜 Smart Contracts | Solidity 0.8.20 + Hardhat |
+| 🖥️ Frontend | Next.js 16, React 19, TypeScript |
+| 🎨 Styling | Tailwind CSS + Framer Motion |
+| 🔗 Web3 | ethers.js v6 + MetaMask |
+| 🤖 AI | Built-in assistant (extensible to any LLM) |
 
 ---
 
-## Project Structure
+## ✨ Features
+
+### 🏡 For Guests
+- Browse properties across **7 countries** with rich detail pages
+- Filter by category: 🏖️ Beachfront, 🏔️ Mountain, 🏙️ City, 🌴 Tropical, 🏡 Countryside, ✨ Unique, 👑 Luxury
+- Book with BNB — smart contract escrow protects your payment
+- Leave verified onchain reviews after your stay
+- Ask the **AI assistant** for personalized recommendations
+
+### 🏠 For Hosts
+- List properties in a single transaction
+- **AI-generated descriptions** — one click to create compelling listing copy
+- Get paid instantly (minus 2.5% fee) when guests check out
+- Track bookings and reviews onchain
+
+### 🤖 AI Integration
+- **Travel Assistant** — floating chatbot that recommends properties by preference, budget, and vibe
+- **Description Generator** — hosts can auto-generate optimized property descriptions
+- Designed to plug into any LLM API (Claude, GPT, etc.) for production
+
+---
+
+## 📂 Project Structure
 
 ```
 hack-bnb/
 ├── contracts/
-│   └── HackBnB.sol           # Main smart contract (escrow, bookings, reviews)
+│   └── HackBnB.sol              # Smart contract (escrow, bookings, reviews)
 ├── scripts/
-│   └── deploy.ts              # Hardhat deployment script
-├── test/                      # Contract tests
+│   └── deploy.ts                 # Deployment + seed data
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx         # Root layout with providers
-│   │   ├── page.tsx           # Homepage (hero, featured, how-it-works)
-│   │   ├── explore/page.tsx   # Property search & filtering
-│   │   ├── host/page.tsx      # List property form with AI description
-│   │   ├── trips/page.tsx     # User booking history
-│   │   └── property/[id]/     # Property detail & booking
+│   │   ├── page.tsx              # 🏠 Homepage (hero, featured, how-it-works)
+│   │   ├── explore/page.tsx      # 🔍 Search & filter properties
+│   │   ├── host/page.tsx         # ➕ List a property (with AI descriptions)
+│   │   ├── trips/page.tsx        # 🧳 Booking history
+│   │   └── property/[id]/page.tsx# 📋 Property detail + booking widget
 │   ├── components/
-│   │   ├── Navbar.tsx         # Navigation with wallet connection
-│   │   ├── Footer.tsx         # Site footer
-│   │   ├── PropertyCard.tsx   # Property listing card
-│   │   ├── CategoryBar.tsx    # Category filter chips
-│   │   └── AIAssistant.tsx    # Floating AI chatbot
+│   │   ├── Navbar.tsx            # Navigation + wallet connection
+│   │   ├── Footer.tsx            # Site footer
+│   │   ├── PropertyCard.tsx      # Property listing card
+│   │   ├── CategoryBar.tsx       # Category filter chips
+│   │   └── AIAssistant.tsx       # 🤖 Floating AI chatbot
 │   ├── context/
-│   │   └── Web3Context.tsx    # Wallet & contract state management
+│   │   └── Web3Context.tsx       # Wallet + contract state
 │   └── lib/
-│       ├── abi.ts             # Contract ABI
-│       ├── contract.ts        # Chain config & contract address
-│       ├── mockData.ts        # Demo property data
-│       └── utils.ts           # Helpers (formatting, address truncation)
+│       ├── abi.ts                # Contract ABI
+│       ├── contract.ts           # Chain config
+│       ├── mockData.ts           # Demo properties (8 listings)
+│       └── utils.ts              # Helpers
 ├── hardhat.config.ts
 ├── next.config.js
 ├── tailwind.config.ts
-├── package.json               # Single unified package
-└── README.md
+└── package.json                  # Single unified package
 ```
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
 - MetaMask browser extension
-- BNB Testnet tokens ([faucet](https://www.bnbchain.org/en/testnet-faucet))
+- tBNB tokens from the [BNB Testnet Faucet](https://www.bnbchain.org/en/testnet-faucet)
 
-### Install & Run
+### Run Locally
 
 ```bash
-# Clone
 git clone https://github.com/chinesepowered/hack-bnb.git
 cd hack-bnb
-
-# Install all dependencies (Next.js + Hardhat)
 npm install
-
-# Start the dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) and connect your wallet.
 
-### Smart Contract Deployment
+### Deploy the Smart Contract
 
 ```bash
-# Copy env and add your private key
 cp .env.example .env
+# Add your deployer private key to .env
 
-# Compile contracts
 npm run compile
-
-# Deploy to BSC Testnet
-npm run deploy:testnet
-
-# Deploy to opBNB Testnet
-npm run deploy:opbnb
+npm run deploy:testnet       # BSC Testnet
+# npm run deploy:opbnb       # or opBNB Testnet
 ```
 
-After deploying, update `NEXT_PUBLIC_CONTRACT_ADDRESS` in `.env.local` with the deployed address.
+Update `NEXT_PUBLIC_CONTRACT_ADDRESS` in `.env.local` with the deployed address.
 
 ---
 
-## Smart Contract
+## 📜 Smart Contract
 
-The `HackBnB.sol` contract handles:
+`HackBnB.sol` — a single, clean contract that handles everything:
 
-| Function | Description |
+| Function | What it does |
 |----------|-------------|
-| `listProperty()` | Host lists a new property with name, location, price |
-| `bookProperty()` | Guest books with BNB (escrow held in contract) |
-| `completeBooking()` | Host marks booking complete, funds released |
-| `cancelBooking()` | Guest/host cancels, refund processed |
-| `submitReview()` | Guest leaves onchain review (1-5 stars + comment) |
+| `listProperty()` | Host creates a listing (name, location, price, image) |
+| `bookProperty()` | Guest pays with BNB — funds held in contract escrow |
+| `completeBooking()` | Marks booking complete, releases funds to host |
+| `cancelBooking()` | Cancels booking, handles refund logic |
+| `submitReview()` | Guest leaves an onchain review (1-5 stars + comment) |
+| `getAllProperties()` | Returns all listed properties |
+| `getPropertyReviews()` | Returns all reviews for a property |
 
-**Security:** ReentrancyGuard on all payment functions. 2.5% platform fee on bookings.
-
----
-
-## Demo Walkthrough
-
-1. **Connect Wallet** — Click "Connect Wallet" and connect MetaMask to BSC Testnet
-2. **Explore** — Browse 8 demo properties across 7 countries, filter by category
-3. **Book a Stay** — Select dates on a property page, review pricing, confirm onchain
-4. **Host** — List your own property with AI-generated descriptions
-5. **AI Assistant** — Click the chat bubble to ask for recommendations
-6. **View Trips** — Check booking history and leave onchain reviews
+**Security:** ReentrancyGuard-safe payment flows. Platform fee capped at 10% max (currently 2.5%). Owner-only admin functions.
 
 ---
 
-## AI Integration
+## 🎬 Demo Walkthrough
 
-HackBnB uses AI in two ways:
-
-1. **AI Travel Assistant** — A floating chatbot that helps guests discover properties based on preferences (beach, budget, city, luxury, etc.). Responds contextually with property recommendations and booking guidance.
-
-2. **AI Description Generator** — Hosts can generate optimized property descriptions with one click when listing. The AI analyzes the property name and location to create compelling, detailed descriptions.
-
-Both are designed to be extended with real LLM API calls (Claude, GPT, etc.) for production use.
-
----
-
-## Hackathon Tracks
-
-- **BNB Chain** — Smart contracts deployed on BSC Testnet
-- **AI Integration** — AI-powered property discovery and content generation
-- **DeFi / Consumer** — Decentralized accommodation marketplace
+1. 🦊 **Connect Wallet** — Hit "Connect Wallet" and switch to BSC Testnet
+2. 🔍 **Explore** — Browse 8 demo properties across Bali, Tokyo, Zermatt, NYC, Santorini, Costa Rica, Tuscany, and Dubai
+3. 📅 **Book** — Pick dates, review the price breakdown, and confirm your booking onchain
+4. ➕ **Host** — List your own property and let AI write the description for you
+5. 💬 **AI Chat** — Click the floating chat bubble to get personalized recommendations
+6. 🧳 **Trips** — View your booking history with transaction links
 
 ---
 
-## License
+## 🏗️ Architecture
+
+```
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│   Next.js    │───▶│  ethers.js   │───▶│  HackBnB.sol │
+│   Frontend   │    │   + MetaMask │    │  (BSC Testnet)│
+└──────┬───────┘    └──────────────┘    └──────────────┘
+       │
+       ▼
+┌──────────────┐
+│ AI Assistant │
+│ (Chat + Desc │
+│  Generator)  │
+└──────────────┘
+```
+
+The frontend talks to the smart contract via ethers.js through MetaMask. The AI assistant runs client-side with keyword matching (designed to be swapped with a real LLM API endpoint). All booking and review data lives onchain.
+
+---
+
+## 🤝 Why BNB Chain?
+
+- ⚡ **Fast finality** — ~3 second block times mean bookings confirm instantly
+- 💰 **Low gas** — transactions cost fractions of a cent
+- 🌐 **Massive ecosystem** — largest EVM-compatible chain by daily active users
+- 🔒 **Battle-tested** — production-grade security for real-world applications
+
+---
+
+## 📄 License
 
 MIT

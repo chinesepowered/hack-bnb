@@ -77,7 +77,7 @@ async function main() {
   console.log(`\n🎉 Deployment complete!`);
   console.log(`   Contract: ${address}`);
   console.log(`   Properties: ${properties.length} listed`);
-  console.log(`\n📋 Add this to your frontend/.env.local:`);
+  console.log(`\n📋 Add this to your .env.local:`);
   console.log(`   NEXT_PUBLIC_CONTRACT_ADDRESS=${address}`);
 }
 

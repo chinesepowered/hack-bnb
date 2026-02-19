@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { useWeb3 } from "@/context/Web3Context";
 import { MOCK_PROPERTIES, MOCK_REVIEWS } from "@/lib/mockData";
-import { shortenAddress, formatDate, timeAgo, cn } from "@/lib/utils";
+import { timeAgo, cn } from "@/lib/utils";
 import { ACTIVE_CHAIN } from "@/lib/contract";
 
 export default function PropertyDetailPage() {
